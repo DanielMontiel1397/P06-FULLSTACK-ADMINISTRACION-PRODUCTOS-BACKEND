@@ -5,7 +5,10 @@ dotenv.config();
 const db = new Sequelize(process.env.BD_URL_EXTERNAL!,{
     models: [__dirname + '/../models/**/*'],
     dialectOptions: {
-        ssl: false
+        ssl: process.env.NODE_ENV === 'production' ? {
+            requiere: false,
+            rejectUnauthorized: false
+        } : false
     },
     logging: false
 });

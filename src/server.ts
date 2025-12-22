@@ -27,8 +27,6 @@ const app = express();
 //Permitir conexiones
 const corsOptions : CorsOptions= {
     origin: function(origin, callback) {
-        callback(null, true);
-        return;
         if(origin === process.env.URL_FRONTEND){
             callback(null, true);
         } else {
