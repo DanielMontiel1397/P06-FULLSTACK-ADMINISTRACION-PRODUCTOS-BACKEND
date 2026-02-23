@@ -30,7 +30,7 @@ const corsOptions : CorsOptions= {
         if(origin === process.env.URL_FRONTEND){
             callback(null, true);
         } else {
-            callback(new Error('Error de CORS'), false)
+            callback(null, true)
         }
     }
 }
@@ -45,8 +45,7 @@ app.use(express.json())
 //ROUTING
 app.use('/api/productos', routeApp);
 
-
 //Docs
-app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec, swaggerUiOptions));
+app.use('/api/docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec, swaggerUiOptions));
 
 export default app;
